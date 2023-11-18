@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css')}}">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+		rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.5.0.min.js"
+		integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+	<nav>
+		<div class="nav-brand">
+			<div class="nav-head">
+				<div><span class="head1">CRYPT</span><span class="head2">GRAPHY</span></div><i class="fa fa-plus"></i>
+			</div>
+			<div class="btn">
+				<a href="/decryption">
+					<div class="nav-data">Decryption</div>
+				</a>
+				<a href="/logout">
+					<div class="nav-data logout">Logout</div>
+				</a>
+			</div>
+		</div>
+	</nav>
+
+	<section>
+		<div class="form">
+			<form class="form-box" method="POST" action="/dashboard" enctype="multipart/form-data">
+
+				<h1>Upload File</h1>
+				<label for="file">Upload File<span>*</span></label><br>
+				<input type="file" id="file" name="file">
+				<div class="or-line"></div>
+
+				<label for="text"> Add Information<span>*</span></label>
+				<input type="text" id="text" name="text" placeholder="Enter data" required="true" maxlength="50">
+				<label for="key">Key<span>*</span></label>
+				<input type="number" id="key" name="key" placeholder="Enter Key" required="true" maxlength="5">
+				<div class="or-line"></div>
+
+
+				<label for="image">Image<span>*</span></label>
+				<input type="radio" id="image" name="fileType" checked="true" value="Image"><br><br>
+
+				<div class="or-line"></div>
+				<button class="signin">Click to Upload</button><br>
+				<div class="or-line"></div>
+			</form>
+		</div>
+
+		<div class="image">
+			<img src="{{ url_for('static',filename='img/encrypt.gif')}}">
+		</div>
+
+	</section>
+	<script src="{{url_for('static',filename='index.js')}}"></script>
+</body>
+
+</html>

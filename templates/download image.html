@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Download</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style.css')}}">
+	<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<nav>
+	<div class="nav-brand">
+		<div class="nav-head">
+			<div><span class="head1">CRYPT</span><span class="head2">GRAPHY</span></div><i class="fa fa-plus"></i>
+		</div>
+			<div class="btn">
+				<a href="/dashboard"><div class="nav-data">Dashboard</div></a>
+				<a href="/logout"><div class="nav-data logout">Logout</div></a>
+			</div>
+	</div>
+</nav>
+
+
+<section class="download">
+	
+	<div class="image">
+		<img src="{{ url_for('static',filename='userImage1.png')}}">
+	</div>
+
+	<div class="image-btn">
+		<a href="/download-image" target="_blank"><div>Click here to download</div></a>
+	</div>
+</section>
+<script src="{{url_for('static',filename='index.js')}}"></script>
+	
+
+
+</body>
+</html>

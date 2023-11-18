@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication Form</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/login-style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+
+</head>
+
+<body style="background: linear-gradient(to right, #fc5c7d, #6a82fb);">
+
+    {% if change==False %}
+    <section>
+        <form class="signin-box" method="POST" action="/login">
+            <h1>Sign in to your account</h1>
+            <label for="email">Email Address<span>*</span></label><br>
+            <input type="email" id="email" name="emailaddress" placeholder="Enter your email adddress"><br><br>
+            <label for="pass">Password<span>*</span></label><br>
+            <input type="password" id="pass" name="pass" placeholder="Enter your password"><br><br>
+            <button class="signin">SIGN IN </button><br><br>
+            <div class="or-line">
+                <span>OR</span>
+            </div><br>
+            <a href="/change-password">Forgot Password?</a>
+        </form>
+    </section>
+    {% endif %}
+
+    {% if change %}
+    <section class="signin-box">
+        <form  method="POST" action="/change-password">
+            {% if status==0 and keyValidation == True %}
+            <div style="padding: 10px;text-align: center;">Sorry User does not exist or Invalid Email <p style="color:blue">Pasword Update Status : Failed !</p> </div>
+            {% endif %}
+
+            {% if status==-1 and keyValidation == False %}
+            <div style="padding: 10px;text-align: center;">Sorry secret key does not match. Invalid Key <p style="color:blue">Pasword Update Status : Failed !</p> </div>
+            {% endif %}
+
+            {% if status==1 %}
+            <div style="padding: 10px;text-align: center;"><p style="color:blue">Pasword Update Status : Succes !</p>Go back and Login </div>
+            {% endif %}
+
+            <h1>Change your password</h1>
+            <label for="email">Email Address<span>*</span></label><br>
+            <input type="email" id="email" name="emailaddress" placeholder="Enter your email adddress"><br><br>
+            <label for="secretKey">Enter Secret Key<span>*</span></label><br>
+            <input type="text" id="secretKey" name="secretKey" placeholder="Enter secret key"><br><br>
+            <label for="pass">New Password<span>*</span></label><br>
+            <input type="password" id="pass" name="pass" placeholder="Enter your new password"><br><br>
+            <button class="signin">UPDATE</button><br><br>
+        </form>
+        <a href="/login"><button class="signin">GO BACK</button></a><br><br>
+    </section>
+    {% endif %}
+
+</body>
+
+</html>
